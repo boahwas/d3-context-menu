@@ -97,6 +97,17 @@
 						if (closeCallback) {
 							closeCallback();
 						}
+					})
+					.on("keyup", function (d, i) {
+						if (d3.event.key === "Enter") {
+							value = d3.select(this).select('.is-subMenu input').property("value");
+							d.action(value);
+							d3.select('.d3-context-menu').style('display', 'none');
+
+							if (closeCallback) {
+								closeCallback();
+							}
+						}
 					});
 
 				d3.select(".is-subMenu").on("click", function () {
